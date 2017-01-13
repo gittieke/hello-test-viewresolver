@@ -1,0 +1,41 @@
+package hello;
+import java.util.Map;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.ViewResolver;
+import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.view.InternalResourceViewResolver;
+
+
+//@EnableWebMvc
+//public class WebConfig extends WebMvcConfigurerAdapter{
+//@WebMvcAutoConfiguration
+
+//@Configuration
+//@EnableWebMvc - WebMvcAutoConfiguration
+//@EnableWebMvc
+public class WebAutoConfig  extends WebMvcConfigurerAdapter {
+	    
+	@Bean
+    public ViewResolver getViewResolver() {
+        InternalResourceViewResolver viewInternalResourceViewResolver = new InternalResourceViewResolver();        
+        viewInternalResourceViewResolver.setPrefix("/");
+        viewInternalResourceViewResolver.setSuffix("");
+        System.out.println("InternalResourceViewResolver");        
+        Map<String,Object> m = viewInternalResourceViewResolver.getAttributesMap();        		
+        for (Map.Entry<String, Object> entry : m.entrySet()){
+        	System.out.println(entry.getKey() + "/" + entry.getValue());
+        }        		        	       
+        return viewInternalResourceViewResolver;
+    }
+
+    @Override
+    public void configureDefaultServletHandling(
+            DefaultServletHandlerConfigurer configurer) {
+        configurer.enable();
+    }    
+}
+ 
