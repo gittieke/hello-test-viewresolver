@@ -1,4 +1,5 @@
 <!DOCTYPE HTML>
+<%@ page import = "java.util.*" %>
 <html>
 <head> 
     <title>Getting Started: Serving Web Content</title> 
@@ -7,8 +8,7 @@
 <title>
 greeting.html
 </title>
- 
 <body>
-greeting.html
+Hello, <% request.getParameter("name") %>!
 </body>
 </html>

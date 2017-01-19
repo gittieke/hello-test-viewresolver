@@ -6,15 +6,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
-@Controller 
-@EnableWebMvc
+@Controller
 public class GreetingController {
 
     @RequestMapping("/greeting")
     public String greeting(@RequestParam(value="name", required=false, defaultValue="World") String name, Model model) {
     	System.out.println("requestParam: " +name);
         model.addAttribute("name", name);
-        return "META-INF-resources-greeting";
+        return "greeting";
     }
     
     @RequestMapping("/webAutoConfig")
